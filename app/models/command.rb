@@ -4,8 +4,8 @@ class Command < ApplicationRecord
 
   attr_accessor :duplicate
 
-  def self.seed(direction, symbol, amount, price, price_percent: 1.0, check_time: 5*30, duplicate: false)
-    record = create(direction: direction, amount: amount, symbol: symbol, price: price,  price_percent: price_percent, check_time: check_time)
+  def self.seed(direction, symbol, amount, price, priority: 5, max_order_amount: 10.0,  price_percent: 1.0, check_time: 5*60, duplicate: false)
+    record = create(direction: direction, amount: amount, symbol: symbol, price: price,  price_percent: price_percent, check_time: check_time, max_order_amount: max_order_amount, priority: priority)
     return record.errors.full_messages if record.errors.any?
   end
 
